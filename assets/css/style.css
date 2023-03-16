@@ -63,17 +63,41 @@ body::before {
 .player-one {
     background-image: url('/assets/images/pizza1.png');
     background-size: cover;
+    animation: slideIn .8s ease-out;
 }
 
 .player-two {
     background-image: url('/assets/images/pizza3.png');
     background-size: cover;
+    animation: slideIn .8s ease-out;
 }
+
+@keyframes slideIn {
+    0% {
+      transform: translateY(-600%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 
 .gold {
     background-image: url('https://cdn-icons-png.flaticon.com/512/6381/6381582.png');
     background-size: cover;
+    animation: twirl 1s linear;
 }
+
+@keyframes twirl {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
 
 @media (max-width: 460px) {
     /* Adjust grid width and height for smaller screens */
