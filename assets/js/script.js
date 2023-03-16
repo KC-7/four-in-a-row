@@ -1,9 +1,19 @@
+/*
+This code adds an event listener to the DOMContentLoaded event which waits for the entire
+HTML document to load before running the code. It then creates a number of constants that will 
+be used throughout the code, such as the game board squares, the result display, and the current 
+player display
+*/
+
 document.addEventListener('DOMContentLoaded', () => {
     const squares = document.querySelectorAll('.grid div')
     const result = document.querySelector('#result')
     const displayCurrentPlayer = document.querySelector('#current-player')
     let currentPlayer = 1
 
+    /*
+    A 2D array called winningArrays is created which contains all the possible ways to win the game.
+    */
     const winningArrays = [
         [0, 1, 2, 3],
         [41, 40, 39, 38],
@@ -76,6 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
         [13, 20, 27, 34],
     ]
 
+    /*
+    The checkBoard() function is defined which loops through each winning array
+    and checks if it has been filled by player one or player two. If a winning
+    combination is found, it updates the result display with the corresponding
+    message (Player One Wins or Player Two Wins).
+    */
     function checkBoard() {
         for (let y = 0; y < winningArrays.length; y++) {
             const square1 = squares[winningArrays[y][0]]
@@ -104,6 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /*
+    A for loop is then used to iterate through each game board square. If a square is clicked, it will
+    then execute the code inside the onclick function. The game then checks to see if the square below
+    the one clicked is taken. If not, it adds the class of either player one or player two to the square
+    (depending on which player is currently playing), then toggles the current player and updates the
+    current player display. Finally, the checkBoard() function is called to see if a winning combination
+    has been found.
+    */
     for (let i = 0; i < squares.length; i++) {
         squares[i].onclick = () => {
             //if the square below your current square is taken, you can go ontop of it

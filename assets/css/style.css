@@ -1,7 +1,24 @@
-.container {
-    justify-content: center; /* center horizontally */
-    align-items: center; /* center vertically */
+body {
+    background-image: url("/assets/images/pizzaBgBlack.png");
+    background-repeat: repeat;
+    background-size: 40%;
+    font-family: 'Courier New', Courier, monospace;
+    color: lime;
+    font-weight: bolder;
+    text-shadow: 50px;
 }
+
+body::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* adjust the alpha value as needed */
+    z-index: -1;
+  }
 
 .grid {
     border: 3px solid;
@@ -17,10 +34,14 @@
     width: 60px;
 }
 
+.grid-cell {
+    border: 1px grey;
+
+}
+
 .player-one {
     background-image: url('https://cdn-icons-png.flaticon.com/512/1404/1404945.png');
     background-size: cover;
-    border-radius: 30px;
 }
 
 .player-two {
