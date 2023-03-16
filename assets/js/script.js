@@ -99,24 +99,52 @@ document.addEventListener('DOMContentLoaded', () => {
             const square3 = squares[winningArrays[y][2]]
             const square4 = squares[winningArrays[y][3]]
 
-            //check those squares to see if they all have the class of player-one
+            // check if all the squares in the winning combination have the same class
             if (
                 square1.classList.contains('player-one') &&
                 square2.classList.contains('player-one') &&
                 square3.classList.contains('player-one') &&
                 square4.classList.contains('player-one')
             ) {
-                result.innerHTML = 'Player One Wins!'
-            }
-            //check those squares to see if they all have the class of player-two
-            if (
+                // update the result display and add the 'gold' class to each square
+                result.textContent = 'Player One Wins!'
+                winningArrays[y].forEach((index) => {
+                    squares[index].classList.remove('player-one')
+                    squares[index].classList.add('gold')
+                })
+                alert("Game Over, Player One Wins!")
+                return
+            } else if (
                 square1.classList.contains('player-two') &&
                 square2.classList.contains('player-two') &&
                 square3.classList.contains('player-two') &&
                 square4.classList.contains('player-two')
             ) {
-                result.innerHTML = 'Player Two Wins!'
+                // update the result display and add the 'gold' class to each square
+                result.textContent = 'Player Two Wins!'
+                winningArrays[y].forEach((index) => {
+                    squares[index].classList.remove('player-two')
+                    squares[index].classList.add('gold')
+                })
+                alert("Game Over, Player Two Wins!")
+                return
             }
+        }
+    }
+
+    /* Show available cells */
+    function showAvailableCells() {
+        for (let i = 0; i < squares.length; i++) {
+            if (squares[i + 7] && squares[i + 7].classList.contains('taken') && !squares[i].classList.contains('taken')) {
+                squares[i].classList.add('available');
+            }
+        }
+    }
+
+    /* Reset available cells */
+    function resetAvailableCells() {
+        for (let i = 0; i < squares.length; i++) {
+            squares[i].classList.remove('available');
         }
     }
 
@@ -129,6 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
     has been found.
     */
     for (let i = 0; i < squares.length; i++) {
+        // show available cells for the current click
+        showAvailableCells();
         squares[i].onclick = () => {
             //if the square below your current square is taken, you can go ontop of it
             if (squares[i + 7].classList.contains('taken') && !squares[i].classList.contains('taken')) {
@@ -137,13 +167,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     squares[i].classList.add('player-one')
                     currentPlayer = 2
                     displayCurrentPlayer.innerHTML = currentPlayer
+                    resetAvailableCells();
+                    showAvailableCells();
                 } else if (currentPlayer == 2) {
                     squares[i].classList.add('taken')
                     squares[i].classList.add('player-two')
                     currentPlayer = 1
                     displayCurrentPlayer.innerHTML = currentPlayer
+                    resetAvailableCells();
+                    showAvailableCells();
                 }
-            } else alert('cant go here')
+            } else alert("You can't go here. Please choose a valid cell.")
             checkBoard()
         }
     }

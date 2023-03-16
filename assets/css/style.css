@@ -3,9 +3,15 @@ body {
     background-repeat: repeat;
     background-size: 40%;
     font-family: 'Courier New', Courier, monospace;
-    color: lime;
     font-weight: bolder;
-    text-shadow: 50px;
+    color: white;
+    /*Center items on page*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 body::before {
@@ -16,17 +22,25 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* adjust the alpha value as needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Changes BG Opacity*/
     z-index: -1;
   }
 
+.header, #player {
+    color: lime;
+}
+
+#result {
+    color: red;
+}
+
 .grid {
-    border: 3px solid;
+    border: 3px solid lime;
     height: 360px;
     width: 420px;
     display: flex;
     flex-wrap: wrap;
-    background-color: lightpink;
+    background-color: lightgrey;
 }
 
 .grid div {
@@ -35,16 +49,56 @@ body::before {
 }
 
 .grid-cell {
-    border: 1px grey;
+    box-sizing: border-box;
+    border: 2px solid grey;
+    border-radius: 50%;
+    background-color: lemonchiffon;
+}
 
+.available {
+    border: 5px dotted black;
+    background-color: lightgreen;
 }
 
 .player-one {
-    background-image: url('https://cdn-icons-png.flaticon.com/512/1404/1404945.png');
+    background-image: url('/assets/images/pizza1.png');
     background-size: cover;
 }
 
 .player-two {
-    background-image: url('https://cdn-icons-png.flaticon.com/512/6978/6978255.png');
+    background-image: url('/assets/images/pizza3.png');
     background-size: cover;
+}
+
+.gold {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/6381/6381582.png');
+    background-size: cover;
+}
+
+@media (max-width: 460px) {
+    /* Adjust grid width and height for smaller screens */
+    .grid {
+        height: 240px;
+        width: 280px;
+    }
+
+    /* Adjust div size for smaller screens */
+    .grid div {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Adjust grid width and height for larger screens */
+    .grid {
+        height: 540px;
+        width: 630px;
+    }
+
+    /* Adjust div size for larger screens */
+    .grid div {
+        height: 90px;
+        width: 90px;
+    }
 }
