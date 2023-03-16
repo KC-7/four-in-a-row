@@ -1,0 +1,29 @@
+.container {
+    justify-content: center; /* center horizontally */
+    align-items: center; /* center vertically */
+}
+
+.grid {
+    border: 3px solid;
+    height: 360px;
+    width: 420px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: lightpink;
+}
+
+.grid div {
+    height: 60px;
+    width: 60px;
+}
+
+.player-one {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1404/1404945.png');
+    background-size: cover;
+    border-radius: 30px;
+}
+
+.player-two {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/6978/6978255.png');
+    background-size: cover;
+}
