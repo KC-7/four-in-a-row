@@ -37,6 +37,10 @@ a {
     color: lime;
 }
 
+.how-to{
+    font-size: large;
+}
+
 #result-container {
     background-color: yellow;
     border: 10px solid darkgoldenrod;
