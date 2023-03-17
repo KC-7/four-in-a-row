@@ -1,6 +1,8 @@
 # [FourStar.Pizza](fourstar.pizza)
 
-FourStar.Pizza is a web-based game of Connect 4 that allows players to earn 4 stars by connecting 4 pizzas. The game board is a 6x7 grid that players take turns dropping their pizza onto, aiming to get 4 in a row in any direction. The game also has a responsive design that adapts to different screen sizes, ensuring players can play the game on any device.
+FourStar.Pizza is a web-based game of Connect 4 that allows players to earn 4 stars by connecting 4 pizzas. The game board is a 6x7 grid that players take turns dropping their pizza onto, aiming to get 4 in a row in any direction.
+
+The game also has a responsive design that adapts to different screen sizes, ensuring players can play the game on any device.
 
 Play the game here: [fourstar.pizza](fourstar.pizza)!
 
