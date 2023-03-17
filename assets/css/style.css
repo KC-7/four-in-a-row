@@ -1,5 +1,5 @@
 body {
-    background-image: url("assets/images/pizzaBgBlack.png");
+    background-image: url("../assets/images/pizzaBgBlack.png");
     background-repeat: repeat;
     background-size: 40%;
     font-family: 'Courier New', Courier, monospace;
@@ -61,13 +61,13 @@ body::before {
 }
 
 .player-one {
-    background-image: url('assets/images/pizza1.png');
+    background-image: url('../assets/images/pizza1.png');
     background-size: cover;
     animation: slideIn .8s ease-out;
 }
 
 .player-two {
-    background-image: url('assets/images/pizza3.png');
+    background-image: url('../assets/images/pizza3.png');
     background-size: cover;
     animation: slideIn .8s ease-out;
 }
@@ -84,7 +84,7 @@ body::before {
   }
 
 .gold {
-    background-image: url('https://cdn-icons-png.flaticon.com/512/6381/6381582.png');
+    background-image: url('../assets/images/star.png');
     background-size: cover;
     animation: twirl 1s linear;
 }
