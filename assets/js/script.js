@@ -8,6 +8,7 @@ player display
 document.addEventListener('DOMContentLoaded', () => {
     const squares = document.querySelectorAll('.grid div')
     const result = document.querySelector('#result')
+    const resultContainer = document.querySelector('#result-container')
     const displayCurrentPlayer = document.querySelector('#current-player')
     let currentPlayer = 1
 
@@ -93,12 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
     message (Player One Wins or Player Two Wins).
     */
     function checkBoard() {
+        let winner = null;
         for (let y = 0; y < winningArrays.length; y++) {
             const square1 = squares[winningArrays[y][0]]
             const square2 = squares[winningArrays[y][1]]
             const square3 = squares[winningArrays[y][2]]
             const square4 = squares[winningArrays[y][3]]
-
+    
             // check if all the squares in the winning combination have the same class
             if (
                 square1.classList.contains('player-one') &&
@@ -107,13 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 square4.classList.contains('player-one')
             ) {
                 // update the result display and add the 'gold' class to each square
-                result.textContent = 'Player One Wins!'
+                result.textContent = 'Player One Wins! 🏆'
+                resultContainer.classList.remove("hide"); // display container
                 winningArrays[y].forEach((index) => {
                     squares[index].classList.remove('player-one')
-                    squares[index].classList.add('gold')
+                    squares[index].classList.add('gold', 'player-one-border')
                 })
-                alert("Game Over, Player One Wins!")
-                return
+                winner = "Player One"
+                break;
             } else if (
                 square1.classList.contains('player-two') &&
                 square2.classList.contains('player-two') &&
@@ -121,16 +124,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 square4.classList.contains('player-two')
             ) {
                 // update the result display and add the 'gold' class to each square
-                result.textContent = 'Player Two Wins!'
+                result.textContent = 'Player Two Wins! 🏆'
+                resultContainer.classList.remove("hide"); // display container
                 winningArrays[y].forEach((index) => {
                     squares[index].classList.remove('player-two')
-                    squares[index].classList.add('gold')
+                    squares[index].classList.add('gold', 'player-two-border')
                 })
-                alert("Game Over, Player Two Wins!")
-                return
+                winner = "Player Two"
+                break;
             }
         }
+
+        const playerHeader = document.querySelector('.playerHeader');
+        if (winner !== null) {
+            playerHeader.textContent = ''; // Removes Players Turn Header
+            alert(`Game Over, ${winner} Wins! 🏆`);
+            resetAvailableCells();
+            // disable the game board squares
+            squares.forEach((square) => {
+                square.onclick = null;
+            });
+        }
     }
+    
 
     /* Show available cells */
     function showAvailableCells() {
@@ -164,20 +180,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (squares[i + 7].classList.contains('taken') && !squares[i].classList.contains('taken')) {
                 if (currentPlayer == 1) {
                     squares[i].classList.add('taken')
-                    squares[i].classList.add('player-one')
+                    squares[i].classList.add('player-one', 'player-one-border')
                     currentPlayer = 2
                     displayCurrentPlayer.innerHTML = currentPlayer
                     resetAvailableCells();
                     showAvailableCells();
                 } else if (currentPlayer == 2) {
                     squares[i].classList.add('taken')
-                    squares[i].classList.add('player-two')
+                    squares[i].classList.add('player-two', 'player-two-border')
                     currentPlayer = 1
                     displayCurrentPlayer.innerHTML = currentPlayer
                     resetAvailableCells();
                     showAvailableCells();
                 }
-            } else alert("You can't go here. Please choose a valid cell.")
+            } else alert("You can't go here. Please choose a valid cell (highlighted in green).")
             checkBoard()
         }
     }

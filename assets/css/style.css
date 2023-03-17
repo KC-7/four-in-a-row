@@ -10,6 +10,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     height: 100vh;
     margin: 0;
 }
@@ -30,8 +31,19 @@ body::before {
     color: lime;
 }
 
+#result-container {
+    background-color: yellow;
+    border: 10px solid darkgoldenrod;
+    border-radius: 5px;
+    margin-top: 15px ;
+}
+
 #result {
     color: red;
+}
+
+.hide {
+  display: none;
 }
 
 .grid {
@@ -57,19 +69,33 @@ body::before {
 
 .available {
     border: 5px dotted black;
-    background-color: lightgreen;
+    background: radial-gradient(circle at center, #92e600 0%, #b7ff00 50%, #92e600 100%);
 }
 
 .player-one {
     background-image: url('../images/pizza1.png');
     background-size: cover;
     animation: slideIn .8s ease-out;
+    z-index: 2;
+}
+
+.player-one-border {
+    border: 3px solid red;
+    background-color: red;
+    z-index: 1;
 }
 
 .player-two {
     background-image: url('../images/pizza3.png');
     background-size: cover;
     animation: slideIn .8s ease-out;
+    z-index: 2;
+}
+
+.player-two-border {
+    border: 3px solid blue;
+    background-color: blue;
+    z-index: 1;
 }
 
 @keyframes slideIn {
@@ -86,7 +112,8 @@ body::before {
 .gold {
     background-image: url('../images/star.png');
     background-size: cover;
-    animation: twirl 1s linear;
+    animation: twirl 2s linear;
+    z-index: 2;
 }
 
 @keyframes twirl {
